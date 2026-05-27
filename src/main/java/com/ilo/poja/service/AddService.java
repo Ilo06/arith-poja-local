@@ -16,4 +16,13 @@ public class AddService {
     public BigInteger subtractTwoNumbers(BigInteger a, BigInteger b){
         return a.subtract(b);
     }
+
+    public BigInteger multiplyTwoNumbers(BigInteger a, BigInteger b){
+        return a.multiply(b);
+    }
+
+    public BigInteger divideTwoNumbers(BigInteger a, BigInteger b){
+        return a.divide(b);
+    }
+
 }

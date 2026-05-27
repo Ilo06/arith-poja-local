@@ -32,4 +32,19 @@ public class ArithPojaController {
     public ResponseEntity<?> subtractTwoNumber(@RequestParam BigInteger a, BigInteger b){
         return ResponseEntity.ok(addService.subtractTwoNumbers(a ,b));
     }
+
+    @PostMapping("/multiply")
+    public ResponseEntity<?> multiplyTwoNumber(@RequestParam BigInteger a, BigInteger b){
+        return ResponseEntity.ok(addService.multiplyTwoNumbers(a ,b));
+    }
+
+    @PostMapping("/divide")
+    public ResponseEntity<?> divideTwoNumbers(@RequestParam BigInteger a, BigInteger b){
+
+        if (b.equals(BigInteger.ZERO)){
+            ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Cannot Divide by 0");
+        }
+
+        return ResponseEntity.ok(addService.divideTwoNumbers(a ,b));
+    }
 }
