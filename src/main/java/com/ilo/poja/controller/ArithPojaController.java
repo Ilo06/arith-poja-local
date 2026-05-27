@@ -21,10 +21,15 @@ public class ArithPojaController {
 
     @PostMapping("/add")
     public ResponseEntity<?> sumTwoPositiveNumber(@RequestParam BigInteger a, BigInteger b){
-        if (a.signum() < 0 || b.signum() <= 0){
+        if (a.signum() < 0 || b.signum() < 0){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("A and B must be greater than 0");
         }
 
         return ResponseEntity.ok(addService.sumTwoPositiveNumbers(a ,b));
+    }
+
+    @PostMapping("/minus")
+    public ResponseEntity<?> subtractTwoNumber(@RequestParam BigInteger a, BigInteger b){
+        return ResponseEntity.ok(addService.subtractTwoNumbers(a ,b));
     }
 }

@@ -12,4 +12,8 @@ public class AddService {
     public BigInteger sumTwoPositiveNumbers(BigInteger a, BigInteger b){
         return a.add(b);
     }
+
+    public BigInteger subtractTwoNumbers(BigInteger a, BigInteger b){
+        return a.subtract(b);
+    }
 }
