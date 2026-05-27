@@ -1,6 +1,9 @@
 package com.ilo.poja.controller;
 
 import com.ilo.poja.service.AddService;
+import com.ilo.poja.service.DivideService;
+import com.ilo.poja.service.MultiplyService;
+import com.ilo.poja.service.SubtractService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -13,10 +16,17 @@ import java.math.BigInteger;
 public class ArithPojaController {
 
     private final AddService addService;
+    private final SubtractService subtractService;
+    private final MultiplyService multiplyService;
+    private final DivideService divideService;
 
-    public ArithPojaController(AddService addService) {
+    public ArithPojaController(AddService addService, SubtractService subtractService, MultiplyService multiplyService, DivideService divideService) {
         this.addService = addService;
+        this.subtractService = subtractService;
+        this.multiplyService = multiplyService;
+        this.divideService = divideService;
     }
+
 
 
     @PostMapping("/add")
@@ -30,12 +40,12 @@ public class ArithPojaController {
 
     @PostMapping("/minus")
     public ResponseEntity<?> subtractTwoNumber(@RequestParam BigInteger a, BigInteger b){
-        return ResponseEntity.ok(addService.subtractTwoNumbers(a ,b));
+        return ResponseEntity.ok(subtractService.subtractTwoNumbers(a ,b));
     }
 
     @PostMapping("/multiply")
     public ResponseEntity<?> multiplyTwoNumber(@RequestParam BigInteger a, BigInteger b){
-        return ResponseEntity.ok(addService.multiplyTwoNumbers(a ,b));
+        return ResponseEntity.ok(multiplyService.multiplyTwoNumbers(a ,b));
     }
 
     @PostMapping("/divide")
@@ -45,6 +55,6 @@ public class ArithPojaController {
             ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Cannot Divide by 0");
         }
 
-        return ResponseEntity.ok(addService.divideTwoNumbers(a ,b));
+        return ResponseEntity.ok(divideService.divideTwoNumbers(a ,b));
     }
 }

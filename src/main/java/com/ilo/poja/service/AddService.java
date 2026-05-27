@@ -16,20 +16,4 @@ public class AddService {
         return a.add(b);
     }
 
-    public BigInteger subtractTwoNumbers(BigInteger a, BigInteger b){
-        return a.subtract(b);
-    }
-
-    public BigInteger multiplyTwoNumbers(BigInteger a, BigInteger b){
-        return a.multiply(b);
-    }
-
-    public BigInteger divideTwoNumbers(BigInteger a, BigInteger b){
-        if (b.signum() == 0 ){
-            throw new RuntimeException("Cannot divide by 0");
-        }
-
-        return a.divide(b);
-    }
-
 }
