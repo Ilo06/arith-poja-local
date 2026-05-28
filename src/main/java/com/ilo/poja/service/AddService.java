@@ -9,10 +9,9 @@ import java.math.BigInteger;
 @Service
 @AllArgsConstructor
 public class AddService {
-    public BigInteger sumTwoPositiveNumbers(BigInteger a, BigInteger b){
-        if (a.signum() < 0 || b.signum() < 0){
-            throw new RuntimeException("a and b cannot be less than 0");
-        }
+    public BigInteger sumTwoPositiveNumbers(BigInteger a, BigInteger b) {
+        if (a == null || b == null) throw new IllegalArgumentException("a and b cannot be null");
+        if (a.signum() < 0 || b.signum() < 0) throw new IllegalArgumentException("a and b cannot be less than 0");
         return a.add(b);
     }
 
